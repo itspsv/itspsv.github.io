@@ -1,0 +1,245 @@
+:root {
+  color-scheme: light;
+  --bg: #ffffff;
+  --text: #2b2b2b;
+  --muted: #6b6b6b;
+  --faint: #e6e6e6;
+  --tile: #f2f2f2;
+  --link: #1a5fb4;
+  --icon: #555555;
+  --icon-hover: #000000;
+  --card: #ffffff;
+  --card-border: #dddddd;
+}
+
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+main {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 48px 16px 64px;
+}
+
+a { color: var(--link); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ---------- header ---------- */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  margin-bottom: 40px;
+}
+
+.header-text { max-width: 420px; }
+
+.photo {
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: var(--tile);
+}
+
+.name {
+  font-size: 32px;
+  font-weight: 400;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.tagline {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.icons {
+  display: flex;
+  gap: 14px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+
+.icons a {
+  color: var(--icon);
+  display: inline-flex;
+  transition: color 0.15s;
+}
+.icons a:hover { color: var(--icon-hover); }
+.icons svg { width: 21px; height: 21px; display: block; }
+
+/* ---------- sections ---------- */
+
+.bio p { margin: 0 0 12px; }
+
+section { margin-top: 44px; }
+
+.section-title {
+  font-size: 26px;
+  font-weight: 400;
+  margin: 0 0 18px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--faint);
+}
+
+.item {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 18px;
+  padding: 14px 0;
+  align-items: start;
+}
+
+.item.dated { grid-template-columns: 84px 72px 1fr; }
+
+.item + .item { border-top: 1px solid var(--faint); }
+
+.date {
+  color: var(--muted);
+  font-size: 14px;
+  text-align: right;
+  padding-top: 2px;
+  line-height: 1.4;
+}
+.nowrap { white-space: nowrap; }
+
+/* List pictures (university logos, hackathon icons): whole logo, uncropped, on a white tile. */
+img.thumb {
+  object-fit: contain;
+  background: #ffffff;
+  padding: 5px;
+  border: 1px solid var(--faint);
+}
+
+.thumb {
+  width: 72px;
+  height: 72px;
+  border-radius: 6px;
+  object-fit: cover;
+  background: var(--tile);
+  display: block;
+}
+
+.thumb.placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  font-size: 20px;
+  letter-spacing: 0.5px;
+}
+
+.item-title { font-weight: 600; }
+
+.item-text { margin: 2px 0 0; }
+
+.item-links {
+  margin-top: 4px;
+  font-size: 14px;
+  color: var(--muted);
+}
+.item-links a + a::before {
+  content: "·";
+  color: var(--muted);
+  margin: 0 6px;
+  display: inline-block;
+}
+
+.section-footer { color: var(--muted); margin-top: 10px; }
+
+/* ---------- tiles (project cards) ---------- */
+
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 210px));
+  gap: 14px;
+}
+
+.tile {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 4px;
+  padding: 5px 5px 10px;
+  min-width: 0;
+}
+
+.tile-pic { display: block; }
+
+.tile-img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  border-radius: 2px;
+  background: var(--tile);
+}
+
+/* Pictures are shown whole and centered on white (good for icons and logos). */
+img.tile-img {
+  object-fit: contain;
+  background: #ffffff;
+  padding: 12px;
+}
+
+.tile-img.placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  font-size: 28px;
+  letter-spacing: 1px;
+}
+
+.tile-body { padding: 8px 4px 0; }
+
+.tile-title {
+  display: block;
+  font-weight: 600;
+  line-height: 1.35;
+}
+span.tile-title { color: var(--text); }
+
+.tile-skills {
+  margin-top: 4px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+
+/* ---------- small screens ---------- */
+
+@media (max-width: 700px) {
+  .tiles { grid-template-columns: repeat(2, minmax(0, 210px)); }
+}
+
+@media (max-width: 600px) {
+  main { padding-top: 32px; }
+
+  .header { flex-direction: column; text-align: center; gap: 16px; }
+  .icons { justify-content: center; }
+  .photo { width: 180px; height: 180px; }
+
+  .item, .item.dated { grid-template-columns: 56px 1fr; gap: 14px; }
+  .thumb { width: 56px; height: 56px; }
+  .item.dated .date {
+    grid-column: 1 / -1;
+    text-align: left;
+    padding: 0;
+    margin-bottom: -8px;
+  }
+}
